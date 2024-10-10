@@ -1,5 +1,7 @@
 package one.digitalinnovation.gof.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -43,6 +45,11 @@ public class ClienteRestController {
 		clienteService.inserir(cliente);
 		return ResponseEntity.ok(cliente);
 	}
+
+	@PostMapping("/bairro/{bairro}")
+    public List<Cliente> getClientesPorBairro(@PathVariable String bairro) {
+        return clienteService.buscarClientesPorBairro(bairro);
+    }
 
 	@PutMapping("/{id}")
 	public ResponseEntity<Cliente> atualizar(@PathVariable Long id, @RequestBody Cliente cliente) {

@@ -11,6 +11,7 @@ import one.digitalinnovation.gof.model.Endereco;
 import one.digitalinnovation.gof.model.EnderecoRepository;
 import one.digitalinnovation.gof.service.ClienteService;
 import one.digitalinnovation.gof.service.ViaCepService;
+import java.util.List;
 
 /**
  * Implementação da <b>Strategy</b> {@link ClienteService}, a qual pode ser
@@ -80,4 +81,7 @@ public class ClienteServiceImpl implements ClienteService {
 		clienteRepository.save(cliente);
 	}
 
+	public List<Cliente> buscarClientesPorBairro(String bairro) {
+        return clienteRepository.findByEnderecoBairro(bairro);
+    }
 }
